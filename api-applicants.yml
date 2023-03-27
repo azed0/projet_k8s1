@@ -1,0 +1,63 @@
+#applicants deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: applicants-deployment
+  namespace: appscore
+  labels:
+    app: applicants
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: applicants-pod
+  template:
+    metadata:
+      labels:
+        app: applicants-pod
+    spec:
+      containers:
+
+        - name: applicants-container
+          image: azed01/k8s:applicants
+          ports:
+            - containerPort: 80
+              name: applicants-port
+          env:
+            - name:
+              value:
+            - name:
+              value:
+          resources:
+            requests:
+              cpu: ""
+              memory: ""
+            limits:
+              cpu: ""
+              memory: ""
+      restartPolicy: Always
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                 matchExpressions:
+                   - key: app
+                     operator: In
+                     values:
+                       -
+              topologyKey:
+---
+#applicants service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: applicants-service
+  namespace: appscore
+spec:
+  selector:
+    app: applicants-pod
+    
+
+
+

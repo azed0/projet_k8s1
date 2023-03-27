@@ -2,7 +2,7 @@
 
 1/ Déploiement de pods
 
-2/ilan de santé
+2/Bilan de santé
 
 3/Sécurité
 

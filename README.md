@@ -1,11 +1,11 @@
 # projet_k8s
 
-1/ Déploiement de pods
+1/ Déploiement de pods =
 
-2/Bilan de santé
+2/Bilan de santé =
 
-3/Sécurité
+3/Sécurité =
 
-4/Logs
+4/Logs =
 
-5/Déploiement automatisé
+5/Déploiement automatisé =

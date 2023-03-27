@@ -1,33 +1,32 @@
-#applicants deployment
+#identity deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: applicants-deployment
+  name: identity-deployment
   namespace: appscore
   labels:
-    app: applicants
+    app: identity
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: applicants-pod
+      app: identity-pod
   template:
     metadata:
       labels:
-        app: applicants-pod
+        app: identity-pod
     spec:
       containers:
-
-        - name: applicants-container
-          image: azed01/k8s:applicants
-          ports:
-            - containerPort: 80
-              name: applicants-port
+        - name: identity-container
+          image: azed01/k8s:identity
           env:
             - name:
               value:
             - name:
               value:
+          ports:
+            - containerPort: 80
+              name: identity-port
           resources:
             requests:
               cpu: ""
@@ -40,29 +39,26 @@ spec:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
-                 matchExpressions:
-                   - key: app
-                     operator: In
-                     values:
-                       -
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - pap
+                      -
               topologyKey:
 ---
-#applicants service
-
+#identity service
 apiVersion: v1
 kind: Service
 metadata:
-  name: applicants-service
+  name: identity-service
   namespace: appscore
 spec:
   selector:
-    app: applicants-pod
+    app: identity-pod
   ports:
     - port: 80
-      name: applicants-port
       targetPort: 80
+      name: identity-port
       protocol: TCP
   type: ClusterIP
-
-
-

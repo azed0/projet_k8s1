@@ -57,7 +57,12 @@ metadata:
 spec:
   selector:
     app: applicants-pod
-    
+  ports:
+    - port: 80
+      name: applicants-port
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP
 
 
 

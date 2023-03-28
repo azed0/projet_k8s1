@@ -24,3 +24,40 @@ spec:
               value: "Server=database-service;User=sa;Password=Pass@word;Database=dotnetgigs.jobs"
             - name: HostRabbitmq
               value: "rabbitmq-service"
+          ports:
+            - containerPort: 80
+              name: jobs-port
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1500Mi"
+            requests:
+              cpu: "0.5"
+              memory: "500Mi"
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - database-service
+              topologyKey: "kubernetes.io/hostname"
+      restartPolicy: Always
+---
+#Jobs Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: jobs-service
+  namespace: appscore
+spec:
+  selector:
+    app: jobs-pod
+  ports:
+    - port: 80
+      targetPort: 80
+      name: jobs-port
+      protocol: TCP
+  type: ClusterIP

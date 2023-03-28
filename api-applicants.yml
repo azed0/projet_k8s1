@@ -24,10 +24,10 @@ spec:
             - containerPort: 80
               name: applicants-port
           env:
-            - name:
-              value:
-            - name:
-              value:
+          - name: ConnectionString
+            value: "Server=database-service;User=sa;Password=Pass@word;Database=dotnetgigs.applicants;"
+          - name: HostRabbitmq
+            value: "rabbitmq-service"
           resources:
             requests:
               cpu: "0.5"
@@ -44,8 +44,8 @@ spec:
                    - key: app
                      operator: In
                      values:
-                       -
-              topologyKey:
+                       - sql-data-service
+              topologyKey: "kubernetes.io/hostname"
 ---
 
 #applicants service

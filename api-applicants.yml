@@ -34,7 +34,7 @@ spec:
               memory: "500Mi"
             limits:
               cpu: "1"
-              memory: "1500"
+              memory: "1500Mi"
       restartPolicy: Always
       affinity:
         podAffinity:
@@ -44,7 +44,7 @@ spec:
                    - key: app
                      operator: In
                      values:
-                       - sql-data-service
+                       - database-service
               topologyKey: "kubernetes.io/hostname"
 ---
 #applicants service

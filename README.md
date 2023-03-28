@@ -25,7 +25,7 @@
     #installer prometheus
             helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
             helm repo update
-        helm install my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
+            helm install my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
     #récupérer l'@ IP
         kubectl get svc -n appscore
     #Vérification de la configuration du prometheus dans: 

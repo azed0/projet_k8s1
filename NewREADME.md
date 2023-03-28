@@ -58,3 +58,18 @@ Kibana:
 
         installer Kibana:
             helm install kibana elastic/kibana --version 7.10.0 --namespace appscore --set service.type=LoadBalancer
+--------------------------------------------------------------------------------------
+
+Sécurité: 
+    
+Certificat SSL:
+
+        #Créer une clé privée
+            openssl genrsa -out tls.key 2048
+        #Signature du certificat
+            openssl req -new -key tls.key -out tls.csr
+        #Certificat auto-signé 
+            openssl x509 -req -days 365 -in tls.csr -signkey tls.key -out tls.crt
+Secret Kubernetes:
+        
+        kubectl create secret tls tls-appscore --cert=tls.crt --key=tls.key --namespace=appscore

@@ -85,7 +85,14 @@
         service:
             type: ClusterIP
 
-        helm install kibana stable/kibana -f kibana-values.yaml
+       
+        helm repo add elastic https://helm.elastic.co
+        helm repo update
+        helm install kibana elastic/kibana #installer
+        kubectl describe service kibana-kibana -n default | grep "LoadBalancer Ingress"
+                interface utilisateur
+         kubectl get pods -l app=kibana -n default (EN COURS D'EXECUTION)
+
 
 
 5/Déploiement automatisé =

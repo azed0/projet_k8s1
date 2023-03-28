@@ -11,13 +11,13 @@ spec:
   tls:
     - secretName: tls-appscore
   rules:
-    - host: my-app.example.com
+    - host: localhost
       http:
         paths:
-          - path: /my-app
+          - path: /web
             pathType: Prefix
             backend:
               service:
-                name: my-app
+                name: web-service
                 port:
                   name: http

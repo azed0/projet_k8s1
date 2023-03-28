@@ -1,0 +1,45 @@
+#redis deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-data-deployment
+  namespace: appscore
+  labels:
+    app: user-data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-data-pod
+  template:
+    metadata:
+      labels:
+        app: user-data-pod
+    spec:
+      containers:
+        - name: user-data-container
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+              name: user-data-port
+          resources:
+            requests:
+              cpu: "4"
+              memory: "500Mi"
+      restartPolicy: Always
+---
+#redis service
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-data-service
+  namespace: appscore
+spec:
+  selector:
+    app: user-data-pod
+  ports:
+    - port: 6379
+      targetPort: 6379
+      name: user-data-port
+      protocol: TCP
+  type: ClusterIP

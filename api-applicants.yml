@@ -30,11 +30,11 @@ spec:
               value:
           resources:
             requests:
-              cpu: ""
-              memory: ""
+              cpu: "0.5"
+              memory: "500Mi"
             limits:
-              cpu: ""
-              memory: ""
+              cpu: "1"
+              memory: "1500"
       restartPolicy: Always
       affinity:
         podAffinity:

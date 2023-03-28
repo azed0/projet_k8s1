@@ -24,7 +24,7 @@ spec:
               name: web-port
           resources:
             requests:
-              cpu: "4"
+              cpu: "4m"
               memory: "900Mi"
             limits:
               cpu: "1"

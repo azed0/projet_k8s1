@@ -1,0 +1,46 @@
+#database PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-pvc
+  namespace: appscore
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+#database deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+  namespace: appscore
+  labels:
+    app: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database-pod
+  template:
+    metadata:
+      labels:
+        app: database-pod
+    spec:
+      containers:
+        - name: database-container
+          image: azed01/k8s:database
+          ports:
+            - containerPort: 1433
+              name: database-port
+          volumeMounts:
+            - mountPath: /var/opt/mssql/lib/
+              name: database-volume
+      volumes:
+        - name: database-volume
+          persistentVolumeClaim:
+            claimName: database-pvc
+      restartPolicy: Always

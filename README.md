@@ -23,7 +23,7 @@
         kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
         helm install kube-state-metrics prometheus-community/kube-state-metrics
     #installer prometheus
-         helm install stable/prometheus --name my-prometheus --set server.service.type=LoadBalancer --set rbac.create=false
+        helm install my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
     #récupérer l'@ IP
         kubectl get svc -n appscore
     #Vérification de la configuration du prometheus dans: 
@@ -34,7 +34,7 @@
     #Add and edit values.yaml
         helm upgrade my-prometheus stable/prometheus --set server.service.type=LoadBalancer --set rbac.create=false  -f prometheus.values.yaml
     #install grafana 
-        helm install --name my-grafana stable/grafana --set service.type=LoadBalancer --set rbac.create=false
+        helm install my-grafana grafana/grafana --set service.type=LoadBalancer --set rbac.create=false
 
 
 3/Sécurité =

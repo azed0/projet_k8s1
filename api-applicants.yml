@@ -47,7 +47,6 @@ spec:
                        - sql-data-service
               topologyKey: "kubernetes.io/hostname"
 ---
-
 #applicants service
 apiVersion: v1
 kind: Service

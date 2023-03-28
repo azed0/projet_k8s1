@@ -46,7 +46,6 @@ spec:
                       - user-data-service
               topologyKey: "kubernetes.io/hostname"
 ---
-
 #identity service
 apiVersion: v1
 kind: Service

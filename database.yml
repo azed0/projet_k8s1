@@ -10,7 +10,6 @@ spec:
   resources:
     requests:
       storage: 10Gi
-
 ---
 #database deployment
 apiVersion: apps/v1

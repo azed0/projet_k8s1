@@ -1,3 +1,5 @@
+Services:
+----
 A/ Applicants: image===> azed01/k8s:applicants, Service===> applicants-service
 
 B/ Identity: image==> azed01/k8s:identity, Service===> identity-service
@@ -14,15 +16,16 @@ J/ Rabbitmq: image==> rabbitmq:3-management, Service===> rabbitmq-service
 
 --------------------------------------------------------------------------------
  Ingress:
+---
 
     # helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
     # helm repo update
     # helm install nginx-ingress ingress-nginx/ingress-nginx --namespace myingress --set controller.replicaCount=2
 ------------------------------------------------------
-Bilan de santé + ELK (elsaticsearch, logstach, kibana)
-
+Bilan de santé + ELK (elasticsearch, logstash, kibana)
+-----------------------------------------------------
 Bilan de santé:
-
+--------------
 Metrics Server:
 
         installer Metrics server: 
@@ -48,7 +51,7 @@ Grafana:
                 helm install my-grafana grafana/grafana --set service.type=LoadBalancer --set rbac.create=false
 --------------------------------------------------------------------------
 ELK:
-
+---
 Elasticsearch:
         
         installer Elasticsearch:
@@ -67,7 +70,7 @@ Kibana:
 --------------------------------------------------------------------------------------
 
 Sécurité: 
-    
+--
 Certificat SSL:
 
         #Créer une clé privée

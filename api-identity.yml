@@ -20,10 +20,10 @@ spec:
         - name: identity-container
           image: azed01/k8s:identity
           env:
-            - name:
-              value:
-            - name:
-              value:
+          - name: HostRabbitmq
+            value: "rabbitmq-service"
+          - name: RedisHost
+            value: "user-data-service:6379"
           ports:
             - containerPort: 80
               name: identity-port
@@ -43,9 +43,8 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - pap
-                      -
-              topologyKey:
+                      - service-user-data
+              topologyKey: "kubernetes.io/hostname"
 ---
 
 #identity service

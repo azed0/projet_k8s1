@@ -1,5 +1,6 @@
 # projet_k8s
-
+ création d'un name space: kubectl create namespace appscore 
+ 
 1/ Déploiement de pods =
 
     A/ Applicants: image===> azed01/k8s:applicants, Service===> applicants-service

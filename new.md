@@ -1,6 +1,6 @@
 Bilan de santé + ELK (elsaticsearch, logstach, kibana)
 
-Bilan de santé: 
+Bilan de santé:
 
 Metrics Server:
 

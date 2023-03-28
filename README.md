@@ -32,7 +32,7 @@
         pour modifier la cible des métriques il faut récupérer ce code https://github.com/helm/charts/blob/master/stable/prometheus/values.yaml
             et modifier les cibles par le nom de service de notre application
     #Add and edit values.yaml
-        helm upgrade my-prometheus stable/prometheus --set server.service.type=LoadBalancer --set rbac.create=false  -f prometheus.values.yaml
+        helm upgrade my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer --set rbac.create=false  -f prometheus.values.yaml
     #install grafana 
         helm install my-grafana grafana/grafana --set service.type=LoadBalancer --set rbac.create=false
 

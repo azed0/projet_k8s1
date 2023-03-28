@@ -43,7 +43,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - service-user-data
+                      - user-data-service
               topologyKey: "kubernetes.io/hostname"
 ---
 

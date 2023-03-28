@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: appscore
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - secretName: tls-appscore
+  rules:
+    - host: my-app.example.com
+      http:
+        paths:
+          - path: /my-app
+            pathType: Prefix
+            backend:
+              service:
+                name: my-app
+                port:
+                  name: http

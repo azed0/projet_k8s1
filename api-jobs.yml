@@ -1,0 +1,26 @@
+#jobs deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobs-deployment
+  namespace: appscore
+  labels:
+    app: jobs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobs-pod
+  template:
+    metadata:
+      labels:
+        app: jobs-pod
+    spec:
+      containers:
+        - name: jobs-container
+          image: azed01/k8s:jobs
+          env:
+            - name: ConnectionString
+              value: "Server=database-service;User=sa;Password=Pass@word;Database=dotnetgigs.jobs"
+            - name: HostRabbitmq
+              value: "rabbitmq-service"

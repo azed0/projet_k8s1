@@ -41,14 +41,14 @@ Prometheus:
         installer prometheus:
                 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
                 helm repo update
-                helm install my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
+                helm install my-prometheus prometheus-community/prometheus --set server.service.type=LoadBalancer -n appscore
        
 Grafana:
 
         installer grafana:
                 helm repo add grafana https://grafana.github.io/helm-charts
                 helm repo update
-                helm install my-grafana grafana/grafana --set service.type=LoadBalancer --set rbac.create=false
+                helm install my-grafana grafana/grafana --set service.type=LoadBalancer -n appscore
 --------------------------------------------------------------------------
 ELK:
 ---

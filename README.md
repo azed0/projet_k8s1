@@ -96,3 +96,7 @@
 
 
 5/Déploiement automatisé =
+helm create appscore-helm (création du chart)
+helm install nom & chemin du chart //// (tester le package)
+helm package /chemin/vers....
+helm install nompackage ///:
